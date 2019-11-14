@@ -1,0 +1,58 @@
+*{
+	font-family: ZCOOL QingKe HuangYou;
+}
+
+body{
+	background-color: #008daeb5;
+}
+
+h1{
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px
+	font-size: 50px;
+}
+
+h2{
+	font-size: 35px;
+}
+
+p{
+	font-size: 25px;
+}
+
+#button-container{
+	text-align: center;;
+}
+
+#button-container button{
+	margin:8px;
+	border: 3px solid #007cff;
+}
+
+#container{
+	text-align: center;
+}
+
+#result{
+	margin: 0px;
+}
+
+.score-box{
+	display: inline-block;
+	width: 400px;
+}
+
+#score-human{
+	color:#ffe300;
+}
+
+#score-pc{
+	color: red;
+}
+
+#totalScore{
+	margin-top: 0px;
+	color: #0004ff;
+	font-weight: bold;
+}

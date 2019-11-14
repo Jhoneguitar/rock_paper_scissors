@@ -1,166 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rock Paper and Scissors</title>
+	<title>Rock Paper Scissors</title>
 	<meta charset="utf-8">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="stylerps.css">
+	<link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
 </head>
 <body>
-	
-
-	<button>Play 5</button>
-
-	<p class="currentScore"></p>
-	<p class="totalScore"></p>
-
-	<script type="text/javascript">
-
-		
-		let playerScore=0;
-		let computerScore=0;
-		var currentScore=document.querySelector('.currentScore');
-		var totalScore=document.querySelector('.totalScore');
-		const btn=document.querySelector('button');
-		
-		
-
-		function computerPlay(){
-
-			let pcChoice = Math.random();
-			let result;
-			if (pcChoice<0.3) {
-				result="Rock";
-				return result;
-			}	
-			else if (pcChoice>0.3&&pcChoice<0.6) {
-				result="Paper";
-				return result;
-			}		
-			else{
-				result="Scissors";
-			    return result;
-			    }
-		}
-		
-		function playRound(playerSelection, computerSelection){
-
-			let playerSel=caseInsensitive(playerSelection);
-			let checkPlayerSel=checkSelection(playerSel);
-			let playerCom=computerSelection;
-			let resultRound;
-
-			if (checkPlayerSel==false) {
-				resultRound="Not a valid word, please enter a word between Rock, Paper or Scissors";
-				return resultRound;
-			}
-
-
-			//tie
-			if (playerSel==playerCom) {
-				resultRound ="This is a tie! your selection: "+playerSel+", computer selection: "+playerCom;
-                return resultRound;
-			}
-			
-			//Rock beats paper
-			if (playerSel=="Rock"&&playerCom=="Paper"){
-				resultRound="You Lose! Paper beats Rock. Your selection: "+playerSel+", computer selection: "+playerCom;
-				computerScore++;
-				return resultRound;
-			}
-			else if (playerSel=="Rock"&&playerCom=="Scissors") {
-				resultRound="You Won! Rock beats Scissors. Your selection: "+playerSel+", computer selection: "+playerCom;
-				playerScore++;
-				return resultRound;
-			}
-
-			//paper beats rock
-			if (playerSel=="Paper"&&playerCom=="Rock") {
-				resultRound="You Won! Paper beats Rock. Your selection: "+playerSel+", computer selection: "+playerCom;
-				playerScore++;
-				return resultRound;
-			}
-			else if (playerSel=="Paper"&&playerCom=="Scissors") {
-				resultRound="You Lose! Scissors beats Paper. Your selection: "+playerSel+", computer selection: "+playerCom;
-				computerScore++;
-				return resultRound;
-			}
-
-			//scissors beats paper
-			if (playerSel=="Scissors"&&playerCom=="Rock") {
-				resultRound="You Lose! Rock beats Scissors. Your selection: "+playerSel+", computer selection: "+playerCom;
-				computerScore++;
-				return resultRound;
-			}
-			else if (playerSel=="Scissors"&&playerCom=="Paper") {
-				resultRound="You Won! Scissors beats Paper. Your selection: "+playerSel+", computer selection: "+playerCom;
-				playerScore++;
-				return resultRound;
-			}
-		}
-
-
-		function game(){
-
-			resetGame();
-
-			var i;
-			
-			for (i = 0; i < 5; i++) {
-
-				const playerSelection=prompt("Make your choice: rock, paper or scissors");
-		        const computerSelection=computerPlay();
-				alert (playRound(playerSelection, computerSelection));
-				currentScore.textContent="Total Score:   Human "+playerScore+", computer "+computerScore;
-
-			}
-			if (playerScore==computerScore) {
-				totalScore.textContent="This is a tie, no one is the winner";
-			}
-			else if (playerScore>computerScore) {
-				totalScore.textContent="You are the winner!";
-			}
-			else{
-				totalScore.textContent="The computer is the winner!";
-			}
-		}	
-
-        
-		
-		
-
-		function caseInsensitive(word){
-			
-			let cap = word.toLowerCase();
-			let uppercaseFirstLetter = cap.charAt(0).toUpperCase();
-			let cap2 = cap.slice(1);
-			return (uppercaseFirstLetter+cap2);
-
-		}
-
-		function checkSelection(wordToCheck){
-			let comparisonWords=["Rock","Paper","Scissors"];
-			var i;
-		
-			for (i = 0; i<3; i++){
-				if (comparisonWords[i]==wordToCheck) {
-					return wordToCheck;
-				}
-			}
-			return false;
-		}
-
-		function resetGame(){
-			playerScore=0;
-			computerScore=0;
-			totalScore.textContent="";
-			currentScore.textContent="";
-		}
-
-		btn.addEventListener('click',game);
-
-		</script>
-
-
+	<header>
+		<h1>Rock Paper Scissor</h1>
+	</header>
+	<main>
+		<section id="button-container">
+			<button id="Rock"><img src="images/rock.png" alt="rock symbol">Rock</button>
+			<button id="Paper"><img src="images/paper.png" alt="paper symbol">Paper</button>
+			<button id="Scissors"><img src="images/scissors.png" alt="scissors symbol">Scissors</button>
+		</section>
+		<section id="container">
+			<h2 id="round">Round:</h2>
+			<p id="result"></p>
+			<div class="score-box">
+				<p id="score-human"></p>
+			</div>
+			<div class="score-box">
+				<p id="score-pc"></p>
+			</div>	
+				<p id="totalScore"></p>
+		</section>
+	</main>
+	<script type="text/javascript" src="gamerps.js"></script>
 
 </body>
 </html>
